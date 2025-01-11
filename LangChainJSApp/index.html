@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangChain.js RAG Demo</title>
+</head>
+<body>
+    <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+        <h1>RAG Query System</h1>
+        
+        <!--Get the API Key from this input-->
+        <div style="margin-bottom: 20px;">
+            <textarea id="apiKey" placeholder="Enter your OpenAI API key" style="width: 100%; padding: 10px;"></textarea>
+        </div>
+
+        <!--Entering the github token-->
+        <div style="margin-bottom: 20px;">
+            <textarea id="githubToken" placeholder="Enter your GitHub Personal Access Token (optional)" style="width: 100%; padding: 10px;"></textarea>
+        </div>
+
+        <!-- Options for selecting the context -->
+        <div style="margin-bottom: 20px;">
+            <h3>Document Source</h3>
+            <select id="sourceType" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+                <option value="single">Single Document</option>
+                <option value="folder">GitHub Folder</option>
+                <option value="repo">Entire GitHub Repository</option>
+            </select>
+            
+            <!-- Area for inserting the github url for the context source -->
+            <input id="sourceUrl" type="text" placeholder="Enter GitHub URL" style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <button onclick="loadAndProcessDocuments()" style="padding: 10px;">Load Documents</button>
+            <div id="loadStatus" style="margin-top: 10px;"></div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <textarea id="userQuery" placeholder="Enter your question based on the data source" style="width: 100%; padding: 10px;"></textarea>
+            <button onclick="pullFromRepo()" style="margin-top: 10px; padding: 10px;">Submit Query</button>
+        </div>
+
+        <div id="response" style="white-space: pre-wrap; background: #f5f5f5; padding: 15px;"></div>
+    </div>
+
+    <script type="module" src="./src/main.js" defer></script>
+    <script type="module">
+        import {pullFromRepo} from './src/main.js';
+        window.pullFromRepo = pullFromRepo;
+    </script>
+</body>
+</html>
