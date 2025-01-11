@@ -42,53 +42,10 @@
         <div id="response" style="white-space: pre-wrap; background: #f5f5f5; padding: 15px;"></div>
     </div>
 
+    <script type="module" src="./src/main.js" defer></script>
     <script type="module">
-        import { OpenAIEmbeddings, ChatOpenAI } from 'https://esm.sh/@langchain/openai';
-        import { MemoryVectorStore } from 'https://esm.sh/langchain/vectorstores/memory';
-        import { PromptTemplate } from 'https://esm.sh/@langchain/core/prompts';
-        import { RunnableSequence } from 'https://esm.sh/@langchain/core/runnables';
-        let files = [];
-
-        async function fetchFilesFromRepo(owner, repo, path="", githubToken){
-            const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-            try{
-                const response = await fetch(url, {
-                    headers: {
-                        "Accept": "application/vnd.github.v3+json",
-                        "Authorization": `Bearer ${githubToken}`
-                    },
-                });
-                if(!response.ok){
-                    throw new Error(`Failed to fetch documents: ${response.statusText}`);
-                }
-                const json = await response.json();
-                for(const item of json){
-                    if(item.type === 'file'){
-                        files.push(item);
-                    } else if(item.type === 'dir'){
-                        await fetchFilesFromRepo(owner, repo, item.path, githubToken);
-                    }
-                }
-            } catch(e){
-                console.error(`Error fetching from path ${path}:`, e);
-            }
-        }
-        window.pullFromRepo = async () => {
-            files = [];
-            const owner = 'djsurt';
-            const repo = 'localsite';
-            const path = "";
-            const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
-            const githubToken = document.getElementById('githubToken').value;
-
-            try{
-                await fetchFilesFromRepo(owner, repo, "", githubToken);
-                console.log("Files:", files);
-            } catch(e){
-                console.error("Error fetching files:", e);
-            }
-        }
+        import {pullFromRepo} from './src/main.js';
+        window.pullFromRepo = pullFromRepo;
     </script>
 </body>
 </html>

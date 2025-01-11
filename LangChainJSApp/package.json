@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@langchain/core": "^0.1.40",
+    "@langchain/openai": "^0.0.14",
+    "langchain": "^0.1.21"
+  },
+  "devDependencies": {
+    "vite": "^5.0.12"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+}
