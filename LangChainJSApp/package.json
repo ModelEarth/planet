@@ -1,8 +1,11 @@
 {
   "dependencies": {
-    "@langchain/core": "^0.1.40",
-    "@langchain/openai": "^0.0.14",
-    "langchain": "^0.1.21"
+    "@langchain/community": "^0.3.24",
+    "@langchain/core": "^0.3.29",
+    "@langchain/langgraph": "^0.2.39",
+    "@langchain/openai": "^0.3.17",
+    "ignore": "^5.3.2",
+    "langchain": "^0.3.11"
   },
   "devDependencies": {
     "vite": "^5.0.12"

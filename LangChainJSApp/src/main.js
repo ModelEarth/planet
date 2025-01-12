@@ -2,7 +2,8 @@ import { OpenAIEmbeddings, ChatOpenAI } from "@langchain/openai";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { RunnableSequence } from "@langchain/core/runnables";
-import { GithubRepoLoader } from "langchain/document_loaders/web/github";
+import { GithubRepoLoader } from "@langchain/community/document_loaders/web/github";
+
 let files = [];
 
 async function fetchFilesFromRepo(owner, repo, path="", githubToken){
@@ -31,19 +32,30 @@ async function fetchFilesFromRepo(owner, repo, path="", githubToken){
 }
 export async function pullFromRepo(){
     files = [];
-    const owner = 'djsurt';
-    const repo = 'localsite';
-    const path = "";
-    const url = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-
     const githubToken = document.getElementById('githubToken').value;
-
-    try{
-        await fetchFilesFromRepo(owner, repo, "", githubToken);
-        console.log("Files:", files);
-    } catch(e){
-        console.error("Error fetching files:", e);
-    }
+    const loader = new GithubRepoLoader(
+        "https://github.com/djsurt/localsite",
+        {
+          branch: "main",
+          recursive: true,
+          processSubmodules: true,
+          unknown: "warn",
+          accessToken: ""
+        }
+    );
+    
+      const docs = [];
+      for await (const doc of loader.loadAsStream()) {
+        docs.push(doc);
+      }
+    
+    console.log({ docs });
+    // try{
+    //     await fetchFilesFromRepo(owner, repo, "", githubToken);
+    //     console.log("Files:", files);
+    // } catch(e){
+    //     console.error("Error fetching files:", e);
+    // }
     // at this point, we have all the files from the repo. Now we need to feed it to the RAG model
     
     const apiKey = document.getElementById('apiKey').value;
