@@ -11,7 +11,7 @@
         
         <!--Get the API Key from this input-->
         <div style="margin-bottom: 20px;">
-            <textarea id="apiKey" placeholder="Enter your OpenAI or HuggingFace API key" style="width: 100%; padding: 10px;"></textarea>
+            <textarea id="apiKey" placeholder="Enter your OpenAI API key" style="width: 100%; padding: 10px;"></textarea>
         </div>
 
         <!--Entering the github token-->
@@ -42,10 +42,9 @@
         <div id="response" style="white-space: pre-wrap; background: #f5f5f5; padding: 15px;"></div>
     </div>
 
-    <!-- Import and bind the functions -->
+    <script type="module" src="./src/main.js" defer></script>
     <script type="module">
-        import { loadAndProcessDocuments, pullFromRepo } from "./src/main.js";
-        window.loadAndProcessDocuments = loadAndProcessDocuments;
+        import {pullFromRepo} from './src/main.js';
         window.pullFromRepo = pullFromRepo;
     </script>
 </body>
