@@ -7,11 +7,31 @@
 <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!-- ✅ TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background-color: #f9fafb;
+      font-family: 'Inter', sans-serif;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #111827;
+    }
+  </style>
+  
 </head>
 
 <body>
 <div class="content contentpadding large-list">
   <div id="readmeDiv"></div>
+
+  <!-- ✅ LangChain widget mounts here -->
+  <div id="chat-widget-container" class="p-4"></div>
 
   <!-- Embed the LLM interface -->
   <script type="module" crossorigin src="widget.js"></script>

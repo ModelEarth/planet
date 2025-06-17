@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LangChain Embed Test</title>
+
+  <!-- ✅ TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background-color: #f9fafb;
+      font-family: 'Inter', sans-serif;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 1.75rem;
+      font-weight: 600;
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <h2>This is an outer page</h2>
+
+  <!-- ✅ LangChain widget mounts here -->
+  <div id="chat-widget-container" class="p-4"></div>
+
+  <!-- ✅ Load the built widget from Vite -->
+  <script type="module" src="trade/assets/widget.js"></script>
+</body>
+</html>
