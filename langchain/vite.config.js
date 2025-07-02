@@ -41,7 +41,7 @@ export default defineConfig(({ command }) => {
         },
       },
     ],
-  base: '/planetModelEarth/' // adjust this to your actual deployment path if needed
+  base: '/planetModelEarth/langchain/trade/' // adjust this to your actual deployment path if needed
     build: {
       outDir: 'trade',
       rollupOptions: {
