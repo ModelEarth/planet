@@ -303,6 +303,11 @@
 
         // Expose updateFeed to the global window object
         window.updateFeed = updateFeed;
+        document.addEventListener("DOMContentLoaded", async () => {
+            getGoogleSheetData();
+
+          });
+
     </script>
 
 
@@ -354,27 +359,18 @@
             var sourceUrlContainer = document.getElementById("sourceUrlContainer");
             var feedApiContainer = document.getElementById("feedApiContainer");
             var githubTokenContainer = document.getElementById("githubTokenContainer");
+            sourceUrlContainer.style.display   = "none";
+            feedApiContainer.style.display  = "none";
+            githubTokenContainer.style.display = "none";
             
             if (sourceType === "feedAPI") {
-                sourceUrlContainer.style.display = "none";
+
                 feedApiContainer.style.display = "block";
-                githubTokenContainer.style.display = "none";
             } 
-            
-            else{
-                sourceUrlContainer.style.display = "block";
-                feedApiContainer.style.display = "none";
-                githubTokenContainer.style.display = "block";
-            }
-
-            if (["single","folder","repo"].includes(sourceType)) {
-              sourceUrlContainer.style.display = "block";
-              githubTokenContainer.style.display  = "block";
-            } else {
-              sourceUrlContainer.style.display = "none";
-              githubTokenContainer.style.display  = "none";
-            }
-
+            else if (["single", "folder", "repo"].includes(sourceType)) {
+                      sourceUrlContainer.style.display = "block";
+                      githubTokenContainer.style.display = "block";
+              } 
         }
 
         document.addEventListener("DOMContentLoaded", () => {

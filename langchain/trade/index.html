@@ -35,7 +35,7 @@
             background-image: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
         }
     </style>
-  <script type="module" crossorigin src="./assets/layout.js"></script>
+  <script type="module" crossorigin src="/planetModelEarth/assets/layout.js"></script>
 </head>
 
 <!-- Avoid adding flex class to body, causes widget to align at top of page. 
@@ -345,27 +345,18 @@
             var sourceUrlContainer = document.getElementById("sourceUrlContainer");
             var feedApiContainer = document.getElementById("feedApiContainer");
             var githubTokenContainer = document.getElementById("githubTokenContainer");
+            sourceUrlContainer.style.display   = "none";
+            feedApiContainer.style.display  = "none";
+            githubTokenContainer.style.display = "none";
             
             if (sourceType === "feedAPI") {
-                sourceUrlContainer.style.display = "none";
+
                 feedApiContainer.style.display = "block";
-                githubTokenContainer.style.display = "none";
             } 
-            
-            else{
-                sourceUrlContainer.style.display = "block";
-                feedApiContainer.style.display = "none";
-                githubTokenContainer.style.display = "block";
-            }
-
-            if (["single","folder","repo"].includes(sourceType)) {
-              sourceUrlContainer.style.display = "block";
-              githubTokenContainer.style.display  = "block";
-            } else {
-              sourceUrlContainer.style.display = "none";
-              githubTokenContainer.style.display  = "none";
-            }
-
+            else if (["single", "folder", "repo"].includes(sourceType)) {
+                      sourceUrlContainer.style.display = "block";
+                      githubTokenContainer.style.display = "block";
+              } 
         }
 
         document.addEventListener("DOMContentLoaded", () => {
