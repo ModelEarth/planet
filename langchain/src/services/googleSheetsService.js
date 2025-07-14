@@ -12,15 +12,32 @@ import { showCORSLink, hideCORSLink } from '../utils/uiHelpers.js';
  */
 export function getGoogleSheetData() {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${RANGE}?key=${API_KEY}`;
+  console.log('Fetching from URL:', url);
   
-  fetch(url)
-    .then(response => response.json())
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
     .then(data => {
-      console.log('Success:', data);
+      console.log('Fetched data:', data);
+      if (!data.values) {
+        throw new Error('No values found in response');
+      }
       populateDropdown(data.values);
     })
     .catch(error => {
-      console.error('Error:', error);
+      console.error('Error fetching Google Sheet data:', error);
+      // Show error in UI
+      const selectElement = document.getElementById('apiFeeds');
+      if (selectElement) {
+        const errorOption = document.createElement('option');
+        errorOption.textContent = 'Error loading feeds';
+        selectElement.appendChild(errorOption);
+        selectElement.disabled = true;
+      }
     });
 }
 

@@ -41,7 +41,8 @@ export default defineConfig(({ command }) => {
         },
       },
     ],
-  base: '/planetModelEarth/', // adjust this to your actual deployment path if needed
+  base:'./', 
+  // '/planetModelEarth/langchain/', // adjust this to your actual deployment path if needed
     build: {
       outDir: 'trade',
       rollupOptions: {
@@ -50,6 +51,7 @@ export default defineConfig(({ command }) => {
           assetFileNames: 'assets/[name].[ext]',
           chunkFileNames: 'assets/[name].js',
           entryFileNames: 'assets/[name].js',
+          format: 'es'
         },
       },
     },

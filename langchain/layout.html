@@ -295,20 +295,6 @@
             }
         }
     </script>
-    <script type="module">
-        import { 
-            getGoogleSheetData, 
-            updateFeed 
-        } from './src/services/googleSheetsService.js';
-
-        // Expose updateFeed to the global window object
-        window.updateFeed = updateFeed;
-        document.addEventListener("DOMContentLoaded", async () => {
-            getGoogleSheetData();
-
-          });
-
-    </script>
 
 
     <script>

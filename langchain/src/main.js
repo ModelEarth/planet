@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize UI elements
   const submitButton = document.getElementById('submitButton');
   const chosenService = document.getElementById('aiModel');
-  const contextBtn = document.getElementById('contextBtn');
+  // const contextBtn = document.getElementById('contextBtn'); //REMOVED contextBtn
   const feedSelector = document.getElementById('apiFeeds');
 
   // Add event listeners
-  contextBtn.addEventListener('click', checkPulledData);
+  // contextBtn.addEventListener('click', checkPulledData);  //REMOVED contextBtn
   chosenService.addEventListener('change', checkOtherAPIKeyRequirement);
   feedSelector.addEventListener('change', (e) => updateFeed(e.target.value));
   
