@@ -35,7 +35,7 @@
 
       // Now load layout.js after HTML is inserted
       const script = document.createElement('script');
-      script.src = 'trade/assets/layout.js';
+      script.src = 'trade/assets/index.js';
       script.type = 'module'; // Use ES Modules syntax (like import.meta, import, or export)
       script.onload = () => {
         console.log('layout.js loaded and executed.');
