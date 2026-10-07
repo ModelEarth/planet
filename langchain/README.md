@@ -1,7 +1,12 @@
 # Planet Langchain
 
-View our [interface development](trade) - view in [website](https://model.earth/planet/langchain/trade/) 
-Click: Document Source > Feed API
+Our Langchain work now resides in [codechat](/codechat)  
+
+<!--View our [interface development](trade) - view in [website](https://model.earth/planet/langchain/trade/) 
+Click: Document Source > Feed API-->
+<br>
+
+Earlier setup:
 
 Install dependencies, including vite, into the node_modules folder:
 
